@@ -5,4 +5,4 @@ export const $ip = `${location.protocol}//${location.hostname}${location.port ? 
 export const $ws = `ws://${location.hostname}${location.port ? ':' : ''}${location.port}`
 
 
-console.log(99999999,'获得本机地址',$ip);
+console.log('恭喜获得本机地址',$ip);
