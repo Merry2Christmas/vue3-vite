@@ -23,20 +23,26 @@
 </template>
 
 <script>
-import { ref, reactive } from 'vue';
-
-// import test from '/src/Api/test.js';
+import { ref, reactive, onMounted } from 'vue';
+// import {dramaApi} from '@/Api/dramaApi.js';
 export default {
     name: "Drama",
     setup() {
         let dramaList = reactive([
             {name:'剧本总数',total:12345},{name:'待发布',total:123456},{name:'已发布',total:12345}
         ])
-        // console.log(9999,test,test.aa());
+        // console.log(dramaApi.aa());
+        // onMounted(()=>{
+        //     console.log(8888888888888888);
+        //     dramaApi.aa;
+        //     console.log(dramaApi.aa());
+        // })
+        
         return {
             dramaList
         };
     },
+    
 };
 </script>
 
