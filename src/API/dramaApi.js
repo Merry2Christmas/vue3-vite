@@ -1,21 +1,20 @@
 import { ref, reactive } from "vue"
-import { get } from "@/request/http.js"
+import {
+    get,
+    postJson
+} from '@/request/https.js'
+
 
 export default{
-    aa(){
-        let b = ref('888');
-        console.log(b);
-        // console.log(99999999999999,get);
-        return b;
-    },
+    // 获得剧本信息
+    async getDramaInfo(param){
 
-    // //查看剧本详情
-    // getDaramInfo(){
-    //     // get(`/v1/iist/scenario/get/0`).then(res => {
-    //     //     console.log(res);
-    //     //     return res
-    //     // })
-    //     console.log(get);
-    //     return get
-    // }
+        // await get(`/v1/iist/scenario/list${param}`)
+
+        // await get(`/v1/iist/scenario/list${param}`).then(res => {
+        //     console.log(res);
+        //     return res
+        // })
+    },
+    
 }

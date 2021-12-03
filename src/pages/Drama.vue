@@ -1,5 +1,5 @@
 <template>
-
+    
     <!-- 剧本管理 -->
     <div class="drama">
         <div class="drama-left">
@@ -16,33 +16,70 @@
                 <div class="_title">
                     <h3>剧本列表<span>共233条</span></h3>
                 </div>
+                <div class="_filter">这里是请求参数</div>
+                <div class="_list">
+                    <el-row class="list-title">
+                        <el-col v-for="(item,index) in titleList" :key="index" :span="item.width">{{ item.name || '--' }}</el-col>
+                    </el-row>
+                </div>
             </div>
         </div>
-        <div class="drama-right standard-box"></div>
+
+
+        <div class="drama-right standard-box">
+            <div class="_title">
+                <h3>剧本模板<span>共23条</span></h3>
+            </div>
+        </div>
+
     </div>
+
 </template>
 
 <script>
 import { ref, reactive, onMounted } from 'vue';
-// import {dramaApi} from '@/Api/dramaApi.js';
 export default {
     name: "Drama",
     setup() {
         let dramaList = reactive([
             {name:'剧本总数',total:12345},{name:'待发布',total:123456},{name:'已发布',total:12345}
+        ]);
+
+        // 列表头数据
+        const titleList = reactive([
+            { name:"序号", width: 3 },
+            { name:"序号", width: 3 },
+            { name:"剧本时间", width: 3 },
+            { name:"创建时间", width: 3 },
+            { name:"最近发布时间", width: 3 },
+            { name:"发布次数", width: 3 },
+            { name:"当前状态", width: 3 },
+            { name:"操作", width: 3 },
         ])
-        // console.log(dramaApi.aa());
-        // onMounted(()=>{
-        //     console.log(8888888888888888);
-        //     dramaApi.aa;
-        //     console.log(dramaApi.aa());
-        // })
-        
+        // 列表内容数据
+        const contentList = reactive([]);
+
+        // 列表参数信息
+        let dramaInfo = reactive({
+            pageIndex: 1,
+            pageSize: 10,
+            param: '',
+            total: '',
+        });
+
+        // 页面请求参数
+        // dramaInfo.param = '?pageIndex=' + dramaInfo.pageIndex + "&pageSize=" + dramaInfo.pageSize;
+        // dramaApi.getDramaInfo(dramaInfo.param)
+
+        // dom加载完成时调用的数据
+        onMounted(()=>{})
+
         return {
-            dramaList
+            dramaList,
+            titleList,
+            dramaInfo
         };
     },
-    
 };
 </script>
 
@@ -102,6 +139,25 @@ export default {
             height: 100px;
             height: calc(100% - 113px);
             ._title{
+                height: 50px;
+            }
+            ._filter{
+                height: 64px;
+            }
+            ._list{
+                height: calc(100% - 114px);
+                .list-title{
+                    width: 100%;
+                    height: 46px;
+                    background-color: rgba(0, 130, 255, 0.04);
+                    .el-col{
+                        height: 46px;
+                        font-size: 14px;
+                        line-height: 46px;
+                        font-weight: bold;
+                        color: #1A1A1A;
+                    }
+                }
             }
         }
     }
