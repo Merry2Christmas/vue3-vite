@@ -38,6 +38,7 @@
 
 <script>
 import { ref, reactive, onMounted } from 'vue';
+import test from "../API/test.js"
 export default {
     name: "Drama",
     setup() {
@@ -72,7 +73,11 @@ export default {
         // dramaApi.getDramaInfo(dramaInfo.param)
 
         // dom加载完成时调用的数据
-        onMounted(()=>{})
+        onMounted(async ()=>{
+            var vv = await test.hhh();
+            console.log(5555,vv);
+            
+        })
 
         return {
             dramaList,

@@ -23,11 +23,19 @@ export default{
         console.log('进行ccc函数');
     },
     vvv(){
-        console.log('进行vvv函数');
+        get(`/v1/iist/scenario/get/8`)
     },
     async hhh(){
-        // let id = ref(8)
-        get(`/v1/iist/scenario/get/8`)
+        // get(`/v1/iist/scenario/get/8`)
+        // const res = await get(`/v1/iist/scenario/get/8`);
+        const res = await get(`v1/iist/scenario/list?pageIndex=1&pageSize=10`);
+        return res;
+    },
+
+    async gg(){
+        const g = get(`/v1/iist/scenario/get/8`);
+        const res = await g;
+        return res
     },
     
 }
